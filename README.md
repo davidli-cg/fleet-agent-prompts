@@ -1,6 +1,8 @@
-# fleet-agents
+# fleet-agent-prompts
 
-A repository for versioning LangSmith Fleet instructions (`AGENTS.md`) and skills.
+Prompts only — no application code.
+
+This repository versions [LangSmith Fleet](https://docs.langchain.com/langsmith/fleet) agent instructions (`AGENTS.md`) and skills. Fleet is LangChain's solution for building no-code agents: you define behavior with prompts and skills, then run them in LangSmith without writing agent code.
 
 Each agent lives in its own directory (e.g. `on-call-agent/`) with:
 
