@@ -5,4 +5,4 @@ A repository for versioning LangSmith Fleet instructions (`AGENTS.md`) and skill
 Each agent lives in its own directory (e.g. `on-call-agent/`) with:
 
 - `AGENTS.md` — Fleet system instructions
-- `skills/` — skill files referenced by those instructions
+- `skills/<skill-name>/SKILL.md` — skill files referenced by those instructions
