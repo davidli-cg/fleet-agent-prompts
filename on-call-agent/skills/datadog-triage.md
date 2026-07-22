@@ -56,7 +56,10 @@ Answer questions and diagnose incidents that can be answered by investigating Da
 If the diagnosis needs implementation detail (error handlers, config, call paths), findings are ambiguous, or the failure looks recurring/patterned, load `github-code-grounding` and read the mapped service repo on **`prod`** instead of inferring. Do not mutate GitHub — recommend changes in the reply only.
 
 ## Output (hand back to the caller)
-- **TL;DR** first: what fired (monitor + threshold), scope/impact, root-cause hypothesis.
-- **Evidence:** dominant error/message, slow span/resource, deploy correlation, metric values. Include `prod` file paths when code was consulted.
+Follow `AGENTS.md` **Response brevity**. Hand back a short diagnosis the caller can post almost as-is — not a full investigation dump.
+
+- **TL;DR** (1–2 sentences): why the monitor fired / the direct answer. Lead with cause.
+- **Evidence:** ≤3 short bullets — dominant error/message, slow resource, or deploy correlation. Key metric values only when they prove the claim. Include `prod` paths only when code was consulted.
 - **Culprit ids:** always list Datadog `trace_id`(s) and `span_id`(s) when they exist, plus links to the log query, trace, or firing monitor.
-- **Suggested next step.**
+- **Next step:** one short actionable line.
+- **Do not** default to full span/log tables, exhaustive host/endpoint lists, or a multi-paragraph "Root cause" that restates the TL;DR. Go deep only if the user asked for a breakdown or something is actually anomalous (see `AGENTS.md`).

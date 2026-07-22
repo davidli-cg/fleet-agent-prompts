@@ -71,6 +71,8 @@ If a write tool appears in the tool list, ignore it. Recommend patches in Slack 
 - Creating or mutating PRs, issues, labels, comments, projects, or files.
 
 ## Output (hand back to the caller)
-- What was checked in GitHub: repo, **`prod`**, file paths (and commit SHA if used).
-- How the code explains (or fails to explain) the observability findings — short quoted evidence.
-- Optional **recommended code change** (path + intent only); never a claim that a PR was opened.
+Keep GitHub findings brief so the caller can fold them into the short Slack skeleton in `AGENTS.md` (not a separate essay).
+
+- Repo + **`prod`** + file path(s) (and commit SHA if used) — one line each when possible.
+- One short note on how the code explains (or fails to explain) the observability findings; a tiny quote only if it is the decisive evidence.
+- Optional **recommended code change** as the single next-step line (path + intent only); never a claim that a PR was opened.

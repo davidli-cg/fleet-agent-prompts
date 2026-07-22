@@ -94,7 +94,10 @@ Alerts titled **"Silent Error Count has Spiked for Genie AI Agent"** or **"Silen
 If the diagnosis needs implementation detail (exact error string origin, tool/node control flow, config), findings are ambiguous, or the failure looks recurring/patterned, load `github-code-grounding` and read the mapped repo on **`prod`** instead of inferring. Do not mutate GitHub — recommend changes in the reply only.
 
 ## Output (hand back to the caller)
-- **TL;DR** first: what fired, scope/impact, root-cause hypothesis.
-- **Evidence:** for Silent Error Count, quote the tool name + output containing the fixed message; otherwise the specific error/slow span, offending input, provider status, etc. Include `prod` file paths when code was consulted.
+Follow `AGENTS.md` **Response brevity**. Hand back a short diagnosis the caller can post almost as-is — not a full investigation dump.
+
+- **TL;DR** (1–2 sentences): why the alert fired / the direct answer. Lead with cause.
+- **Evidence:** ≤3 short bullets with decisive facts only. Silent Error Count → tool name + the fixed message (and upstream cause if known). Latency → round-count / dominant slow pattern, not a full span table. Errors → dominant error string / failing span. Include `prod` paths only when code was consulted.
 - **Culprit ids:** always list `trace_id`(s) and `thread_id`(s) when they exist, plus LangSmith UI links when they can be constructed.
-- **Suggested next step.**
+- **Next step:** one short actionable line.
+- **Do not** default to latency/tool tables, exhaustive tool inventories, or a multi-paragraph "Root cause" that restates the TL;DR. Go deep only if the user asked for a breakdown or something is actually anomalous (see `AGENTS.md`).
