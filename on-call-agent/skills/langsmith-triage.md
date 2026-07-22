@@ -90,8 +90,11 @@ Alerts titled **"Silent Error Count has Spiked for Genie AI Agent"** or **"Silen
 4. Inspect representative traces: for silent errors, the tool `outputs` / `error_message` and upstream cause; for hard errors, error messages/stack traces; for latency, slow spans and model/tool calls (re-fetch with `trace_id` for full trees).
 5. Identify the pattern.
 
+## Code grounding
+If the diagnosis needs implementation detail (exact error string origin, tool/node control flow, config), findings are ambiguous, or the failure looks recurring/patterned, load `github-code-grounding` and read the mapped repo on **`prod`** instead of inferring. Do not mutate GitHub — recommend changes in the reply only.
+
 ## Output (hand back to the caller)
 - **TL;DR** first: what fired, scope/impact, root-cause hypothesis.
-- **Evidence:** for Silent Error Count, quote the tool name + output containing the fixed message; otherwise the specific error/slow span, offending input, provider status, etc.
+- **Evidence:** for Silent Error Count, quote the tool name + output containing the fixed message; otherwise the specific error/slow span, offending input, provider status, etc. Include `prod` file paths when code was consulted.
 - **Culprit ids:** always list `trace_id`(s) and `thread_id`(s) when they exist, plus LangSmith UI links when they can be constructed.
 - **Suggested next step.**

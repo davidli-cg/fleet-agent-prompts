@@ -52,8 +52,11 @@ Answer questions and diagnose incidents that can be answered by investigating Da
 - **LangGraph `CancelledError` / 422 race on `genie-ai-langgraph-integration`** — client cancel racing a request; look for the paired 422 and cancelled spans. This one often shows in both Datadog and LangSmith — hand off to `langsmith-triage` for the trace side.
 - **`risk-ml-service` DynamoDB calls from a shadow model** — unexpected DynamoDB traffic/latency from a shadow neural model path; check span calls to DynamoDB and recent deploys.
 
+## Code grounding
+If the diagnosis needs implementation detail (error handlers, config, call paths), findings are ambiguous, or the failure looks recurring/patterned, load `github-code-grounding` and read the mapped service repo on **`prod`** instead of inferring. Do not mutate GitHub — recommend changes in the reply only.
+
 ## Output (hand back to the caller)
 - **TL;DR** first: what fired (monitor + threshold), scope/impact, root-cause hypothesis.
-- **Evidence:** dominant error/message, slow span/resource, deploy correlation, metric values.
+- **Evidence:** dominant error/message, slow span/resource, deploy correlation, metric values. Include `prod` file paths when code was consulted.
 - **Culprit ids:** always list Datadog `trace_id`(s) and `span_id`(s) when they exist, plus links to the log query, trace, or firing monitor.
 - **Suggested next step.**
