@@ -2,10 +2,10 @@
 name: langsmith-triage
 description: Investigate LangSmith traces/runs to diagnose agent/LLM incidents
   and answer trace-level questions. Use when the Slack sender is the LangSmith
-  app (alerts titled "Genie AI Agent" or "Genie AI LangGraph Deployment",
-  including "Silent Error Count has Spiked"), and for Q&A about runs,
-  LLM/tool/retriever spans, prompts, tokens, or threads. When the Slack sender
-  is LangSmith, use only this skill — do not load datadog-triage.
+  app (alerts titled "Genie AI Agent", "Genie AI LangGraph Deployment", or
+  "Zendesk CS Agent", including "Silent Error Count has Spiked"), and for Q&A
+  about runs, LLM/tool/retriever spans, prompts, tokens, or threads. When the
+  Slack sender is LangSmith, use only this skill — do not load datadog-triage.
 ---
 
 # LangSmith Triage
@@ -28,6 +28,8 @@ Answer questions and diagnose incidents that can be answered by investigating La
   - Title contains **"Genie AI LangGraph Deployment"** → project `genie-ai-langgraph-deployment-prod`
     - project ID: `8629c985-881d-44ec-874c-4327778d6216`
     - Do **not** use the bare name `genie-ai-langgraph-deployment` (it will fail with "no project found").
+  - Title contains **"Zendesk CS Agent"** → project `zendesk-cs-agent-prod`
+    - project ID: `c8dc7144-0490-4dac-a339-e88a92e60fd6`
 - Prefer project **name** or **ID** as `project_name` for `fetch_runs` / related tools once mapped from the title.
 - **Q&A without a LangSmith alert message:** if the user does not specify workspace and tracing project, **ask them to specify both before continuing**. Do not guess.
 

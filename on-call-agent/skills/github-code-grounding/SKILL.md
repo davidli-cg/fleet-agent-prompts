@@ -35,8 +35,10 @@ Slack formatting, routing, and reply conventions are handled by the caller (`AGE
 | `genie-ai-langgraph-integration` | `CreditGenie/genie-ai-langgraph-integration` |
 | LangSmith **"Genie AI Agent"** / project `genie-ai-agent-prod` | `CreditGenie/genie-ai-agent` |
 | LangSmith **"Genie AI LangGraph Deployment"** / project `genie-ai-langgraph-deployment-prod` | `CreditGenie/genie-ai-langgraph-deployment` |
+| LangSmith **"Zendesk CS Agent"** / project `zendesk-cs-agent-prod` | `CreditGenie/zendesk-cs-agent` |
 | `risk-ml-service` | `CreditGenie/risk-ml-service` |
 | `found-money-service` | `CreditGenie/found-money-service` |
+| `zendesk-cs-service` | `CreditGenie/zendesk-cs-service` |
 
 If the failing component is unclear, map from the Datadog `service:` tag or LangSmith project/title first, then open the matching repo on `prod`. If still ambiguous, ask which service/repo — do not guess across unrelated repos.
 

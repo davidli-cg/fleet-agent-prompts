@@ -12,11 +12,11 @@ Answer questions and diagnose incidents that can be answered by investigating Da
 
 ## Environment / key facts
 - Datadog is available via the **Datadog MCP server**. Auth is already configured; use these tools directly — do not ask the user to add an integration. Datadog MCP is scoped to the org by auth, so there is no workspace ID to pass (unlike LangSmith).
-- **Services in scope:** `genie-ai-service`, `genie-ai-langgraph-integration`, `risk-ml-service`, `found-money-service`.
+- **Services in scope:** `genie-ai-service`, `genie-ai-langgraph-integration`, `risk-ml-service`, `found-money-service`, `zendesk-cs-service`.
 - **Load the Datadog skill guide first.** Before using related Datadog tools, call `list_datadog_skills` and `load_datadog_skill` to pull the relevant guide (logs / spans / metrics). This is Datadog MCP's own pattern and improves query accuracy.
 
 ### Alert → service mapping
-- Datadog monitor alert naming usually carries the `service:` tag or the service name in the title. Map it to one of the four services above.
+- Datadog monitor alert naming usually carries the `service:` tag or the service name in the title. Map it to one of the five services above.
 - If the service is not obvious from the alert, resolve it with `search_datadog_services` and `search_datadog_monitors` (look up the firing monitor by name/id from the alert), then confirm the `service` tag before investigating. Do not guess.
 
 ## Query syntax (do NOT reuse LangSmith FQL here)
